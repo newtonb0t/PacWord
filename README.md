@@ -4,6 +4,8 @@
 
 Pac-Word is a recreation of the retro Pac-Man with letters instead of pellets being the main focus. To gain the most points, the player as Pac-Man must collect all letters of the word in the correct order while avoiding ghosts.
 
+In the "PacWord" folder run the PacWord.exe file to run.
+
 <br>
 
 ###  Copyrighted Materials
