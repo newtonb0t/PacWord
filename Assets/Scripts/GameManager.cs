@@ -147,30 +147,7 @@ public class GameManager : MonoBehaviour
         pacman.ResetState();
     }
 
-    private void GameOver()
-    {
-        SoundEffect(3);
-        gameOverText.enabled = true;
-        pressButtonText.enabled = true;
-
-        for (int i = 0; i < ghosts.Length; i++) {
-            ghosts[i].gameObject.SetActive(false);
-        }
-
-        pacman.gameObject.SetActive(false);
-    }
-
-    private void SetLives(int lives)
-    {
-        this.lives = lives;
-        livesText.text = "x" + lives.ToString();
-    }
-
-    private void SetScore(int score)
-    {
-        this.score = score;
-        scoreText.text = "x"+wordStreak+" "+score.ToString().PadLeft(2, '0');
-    }
+    
 
     public void PacmanEaten()
     {
