@@ -113,7 +113,16 @@ public class GameManager : MonoBehaviour
             }
             wordText.text = wordShow;
         } else {
-            
+            indicatorText.gameObject.SetActive(true);
+            wordText.text = word;
+            indicator = "";
+            for (int i = 0; i < word.Length-crIndexOffset; i++) {
+                if (i != 0) {
+                    if (!new char[] {'t','j','i','l'}.Contains(word[i])) indicator += " ";
+                    indicator += " ";
+                } else indicator += "^"; 
+            }
+            indicatorText.text = indicator;
         }
         List<Transform> tileList = new List<Transform>();
         foreach (Transform t in letters) {
@@ -127,6 +136,28 @@ public class GameManager : MonoBehaviour
             sr.sprite = spriteArray[(int) word[i]-87];
             spots[i].gameObject.SetActive(true);
         }
+    }
+
+    private void ResetState()
+    {
+        for (int i = 0; i < ghosts.Length; i++) {
+            ghosts[i].ResetState();
+        }
+
+        pacman.ResetState();
+    }
+
+    private void GameOver()
+    {
+        SoundEffect(3);
+        gameOverText.enabled = true;
+        pressButtonText.enabled = true;
+
+        for (int i = 0; i < ghosts.Length; i++) {
+            ghosts[i].gameObject.SetActive(false);
+        }
+
+        pacman.gameObject.SetActive(false);
     }
 
     private void SetLives(int lives)
